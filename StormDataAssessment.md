@@ -71,9 +71,9 @@ thead, tfoot, tr:nth-child(even) { background: #eee; }
 
 ## Clean the event type
 
-The main field we are looking at is EVTYPE (event type), which is a free text field, it is not a standard set of strings. We use a mapping table, contained in [evtype-replacements.csv](evtype-replacements.csv) to map from the original text to a smaller, more manageable subset of valid event types. In general, the mapping is relatively clear. If the original text contains two possible event types, we take the first. So "rain and wind" becomes "rain". For a complete list of the final event types, see [Event Types](#eventtypes).
+The main field we are looking at is EVTYPE (event type), which is a free text field, it is not a standard set of strings. We use a mapping table, contained in [evtype-replacements.csv](https://github.com/matthewfarwell/StormDataAssessment/blob/master/evtype-replacements.csv) to map from the original text to a smaller, more manageable subset of valid event types. In general, the mapping is relatively clear. If the original text contains two possible event types, we take the first. So "rain and wind" becomes "rain". For a complete list of the final event types, see [Event Types](#eventtypes).
 
-For the Event Type, EVTYPE, replace all non-alphanumeric characters by spaces, trim the strings, and replace multiple spaces by one. All of the values are transformed to lower case. The functions *trimtolower* and *csvmapping* are defined in the file [csv_data_mapping.R](csv_data_mapping.R). If the replacement text is "NA" then the values are replaced by the R value NA (missing indicator).
+For the Event Type, EVTYPE, replace all non-alphanumeric characters by spaces, trim the strings, and replace multiple spaces by one. All of the values are transformed to lower case. The functions *trimtolower* and *csvmapping* are defined in the file [csv_data_mapping.R](https://github.com/matthewfarwell/StormDataAssessment/blob/master/csv_data_mapping.R). If the replacement text is "NA" then the values are replaced by the R value NA (missing indicator).
 
 
 
@@ -94,9 +94,9 @@ From now on, we will only consider this new data set.
 
 ## Calculating the economic damage
 
-The CROPDMGEXP is the exponent of the crop damage. To calculate the damage, we take the value of CROPDMG and multiply it by 10 ^ CROPDMGEXP. Again, though, this is a free text field, with values such as *2*, *5*, *K*, *M* or *B*. In order to calculate the damage, we must replace these with valid numbers where necessary. *K* should be "3", *M* should be "6" and *B* should be 9. The full mapping is contained in [cropdmgexp-replacements.csv](cropdmgexp-replacements.csv).
+The CROPDMGEXP is the exponent of the crop damage. To calculate the damage, we take the value of CROPDMG and multiply it by 10 ^ CROPDMGEXP. Again, though, this is a free text field, with values such as *2*, *5*, *K*, *M* or *B*. In order to calculate the damage, we must replace these with valid numbers where necessary. *K* should be "3", *M* should be "6" and *B* should be 9. The full mapping is contained in [cropdmgexp-replacements.csv](https://github.com/matthewfarwell/StormDataAssessment/blob/master/cropdmgexp-replacements.csv).
 
-We treat PROPDMGEXP similarly, using [propdmgexp-replacements.csv](propdmgexp-replacements.csv).
+We treat PROPDMGEXP similarly, using [propdmgexp-replacements.csv](https://github.com/matthewfarwell/StormDataAssessment/blob/master/propdmgexp-replacements.csv).
 
 
 ```r
@@ -283,11 +283,11 @@ sessionInfo()
 ## 
 ## locale:
 ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-##  [3] LC_TIME=en_GB.UTF-8        LC_COLLATE=en_US.UTF-8    
-##  [5] LC_MONETARY=en_GB.UTF-8    LC_MESSAGES=en_US.UTF-8   
-##  [7] LC_PAPER=en_GB.UTF-8       LC_NAME=C                 
+##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
 ##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-## [11] LC_MEASUREMENT=en_GB.UTF-8 LC_IDENTIFICATION=C       
+## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
@@ -296,14 +296,14 @@ sessionInfo()
 ## [1] reshape2_1.4.4 ggplot2_3.3.2  knitr_1.29     dplyr_1.0.0   
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.4.6     magrittr_1.5     munsell_0.5.0    tidyselect_1.1.0
-##  [5] colorspace_1.4-1 R6_2.4.1         rlang_0.4.6      highr_0.8       
+##  [1] Rcpp_1.0.5       magrittr_1.5     munsell_0.5.0    tidyselect_1.1.0
+##  [5] colorspace_1.4-1 R6_2.4.1         rlang_0.4.7      highr_0.8       
 ##  [9] plyr_1.8.6       stringr_1.4.0    tools_4.0.2      grid_4.0.2      
 ## [13] gtable_0.3.0     xfun_0.15        withr_2.2.0      htmltools_0.5.0 
-## [17] ellipsis_0.3.1   yaml_2.2.1       digest_0.6.25    tibble_3.0.1    
+## [17] ellipsis_0.3.1   yaml_2.2.1       digest_0.6.25    tibble_3.0.3    
 ## [21] lifecycle_0.2.0  crayon_1.3.4     farver_2.0.3     purrr_0.3.4     
-## [25] vctrs_0.3.1      glue_1.4.1       evaluate_0.14    rmarkdown_2.3   
-## [29] labeling_0.3     stringi_1.4.6    compiler_4.0.2   pillar_1.4.4    
+## [25] vctrs_0.3.2      glue_1.4.1       evaluate_0.14    rmarkdown_2.3   
+## [29] labeling_0.3     stringi_1.4.6    compiler_4.0.2   pillar_1.4.6    
 ## [33] generics_0.0.2   scales_1.1.1     pkgconfig_2.0.3
 ```
 

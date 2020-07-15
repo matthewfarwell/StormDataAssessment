@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/639480/49dcf129bbf347ed957c3caf53f3e7d4
+bundleId: https://api.rpubs.com/api/v1/document/639480/49dcf129bbf347ed957c3caf53f3e7d4
+url: http://rpubs.com/matthewfarwell/639480
+when: 1594818045.13392

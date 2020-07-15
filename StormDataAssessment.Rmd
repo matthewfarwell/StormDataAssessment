@@ -53,9 +53,9 @@ thead, tfoot, tr:nth-child(even) { background: #eee; }
 
 ## Clean the event type
 
-The main field we are looking at is EVTYPE (event type), which is a free text field, it is not a standard set of strings. We use a mapping table, contained in [evtype-replacements.csv](evtype-replacements.csv) to map from the original text to a smaller, more manageable subset of valid event types. In general, the mapping is relatively clear. If the original text contains two possible event types, we take the first. So "rain and wind" becomes "rain". For a complete list of the final event types, see [Event Types](#eventtypes).
+The main field we are looking at is EVTYPE (event type), which is a free text field, it is not a standard set of strings. We use a mapping table, contained in [evtype-replacements.csv](https://github.com/matthewfarwell/StormDataAssessment/blob/master/evtype-replacements.csv) to map from the original text to a smaller, more manageable subset of valid event types. In general, the mapping is relatively clear. If the original text contains two possible event types, we take the first. So "rain and wind" becomes "rain". For a complete list of the final event types, see [Event Types](#eventtypes).
 
-For the Event Type, EVTYPE, replace all non-alphanumeric characters by spaces, trim the strings, and replace multiple spaces by one. All of the values are transformed to lower case. The functions *trimtolower* and *csvmapping* are defined in the file [csv_data_mapping.R](csv_data_mapping.R). If the replacement text is "NA" then the values are replaced by the R value NA (missing indicator).
+For the Event Type, EVTYPE, replace all non-alphanumeric characters by spaces, trim the strings, and replace multiple spaces by one. All of the values are transformed to lower case. The functions *trimtolower* and *csvmapping* are defined in the file [csv_data_mapping.R](https://github.com/matthewfarwell/StormDataAssessment/blob/master/csv_data_mapping.R). If the replacement text is "NA" then the values are replaced by the R value NA (missing indicator).
 
 
 ```{r, echo=TRUE}
@@ -74,9 +74,9 @@ From now on, we will only consider this new data set.
 
 ## Calculating the economic damage
 
-The CROPDMGEXP is the exponent of the crop damage. To calculate the damage, we take the value of CROPDMG and multiply it by 10 ^ CROPDMGEXP. Again, though, this is a free text field, with values such as *2*, *5*, *K*, *M* or *B*. In order to calculate the damage, we must replace these with valid numbers where necessary. *K* should be "3", *M* should be "6" and *B* should be 9. The full mapping is contained in [cropdmgexp-replacements.csv](cropdmgexp-replacements.csv).
+The CROPDMGEXP is the exponent of the crop damage. To calculate the damage, we take the value of CROPDMG and multiply it by 10 ^ CROPDMGEXP. Again, though, this is a free text field, with values such as *2*, *5*, *K*, *M* or *B*. In order to calculate the damage, we must replace these with valid numbers where necessary. *K* should be "3", *M* should be "6" and *B* should be 9. The full mapping is contained in [cropdmgexp-replacements.csv](https://github.com/matthewfarwell/StormDataAssessment/blob/master/cropdmgexp-replacements.csv).
 
-We treat PROPDMGEXP similarly, using [propdmgexp-replacements.csv](propdmgexp-replacements.csv).
+We treat PROPDMGEXP similarly, using [propdmgexp-replacements.csv](https://github.com/matthewfarwell/StormDataAssessment/blob/master/propdmgexp-replacements.csv).
 
 ```{r, echo=TRUE}
 sdWithValidEvtype$CROPDMGEXP <- trimtolower(sdWithValidEvtype$CROPDMGEXP)
